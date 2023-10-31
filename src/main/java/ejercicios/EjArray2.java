@@ -20,22 +20,14 @@ public class EjArray2 {
 
     public static void main(String[] args) {
         int numAnimales = solicitarDatoInt();
-        //String[] arrayNombreAnimales = new String[numAnimales];
+        String[] arrayNombreAnimales = new String[numAnimales];
         double[] arrayPesoAnimales = new double[numAnimales];
-        arrayPesoAnimales = rellenarArrayPesos(arrayPesoAnimales);
-        mostrarArray(arrayPesoAnimales);
-        System.out.println("********************PESO ANIMALES********************");
-        mostrarDatosPesos(arrayPesoAnimales);
-//
-//
-///
-//
-//
+        arrayNombreAnimales = rellenarArrayNombres(arrayNombreAnimales);
+        arrayPesoAnimales = rellenarArrayPesos(arrayPesoAnimales, arrayNombreAnimales);
+        mostrarArrayNombre(arrayNombreAnimales);
+        mostrarArrayPeso(arrayPesoAnimales);
+        System.out.println("********************DATOS********************");
 
-//
-//
-//
-        //
     }
 
     // Solicitar Nº animales.
@@ -79,11 +71,13 @@ public class EjArray2 {
     }
 
     // Rellenar array con peso de animales.
-    public static double[] rellenarArrayPesos(double[] array) {
+    public static double[] rellenarArrayPesos(double[] array, String[] nombres) {
         Scanner teclado = new Scanner(System.in);
         double peso;
+
         for (int i = 0; i < array.length; i++) {
             System.out.println("Animal " + (i + 1) + "/" + array.length);
+            System.out.println(nombres[i]);
             peso = solicitarDatoDouble();
             array[i] = peso;
             System.out.println("\n");
@@ -93,16 +87,27 @@ public class EjArray2 {
     }
 
     public static String[] rellenarArrayNombres(String[] array) {
+
         Scanner teclado = new Scanner(System.in);
         String nombre = "";
         for (int i = 0; i < array.length; i++) {
-
+            System.out.println("Animal " + (i + 1) + "/" + array.length);
+            System.out.println("Introduce el nombre:");
+            nombre = teclado.nextLine();
+            array[i] = nombre;
         }
         return array;
     }
 
     //Mostar array rellenado.
-    public static void mostrarArray(double[] array) {
+    public static void mostrarArrayPeso(double[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+    }
+
+    public static void mostrarArrayNombre(String[] array) {
+
         for (int i = 0; i < array.length; i++) {
             System.out.println(array[i]);
         }
