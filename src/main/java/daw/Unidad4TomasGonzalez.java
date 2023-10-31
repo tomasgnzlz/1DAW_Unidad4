@@ -1,7 +1,7 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-package com.mycompany.unidad4tomasgonzalez;
+package daw;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
