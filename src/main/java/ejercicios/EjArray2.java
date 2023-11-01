@@ -27,7 +27,7 @@ public class EjArray2 {
         mostrarArrayNombre(arrayNombreAnimales);
         mostrarArrayPeso(arrayPesoAnimales);
         System.out.println("********************DATOS********************");
-
+        mostrarDatosPesos(arrayPesoAnimales);
     }
 
     // Solicitar Nº animales.
@@ -57,10 +57,13 @@ public class EjArray2 {
         boolean seguir = true;
         double dato = 0;
         do {
-            System.out.println("Introduce el peso: (5,5)");
+//            System.out.println("Introduce el peso: (5,5)");
             try {
                 dato = teclado.nextDouble();
                 teclado.nextLine();
+                if (dato < 0) {
+                    dato = Math.abs(dato);
+                }
                 seguir = false;
             } catch (InputMismatchException ime) {
                 System.out.println("ERROR. Dato no válido\n");
@@ -77,7 +80,7 @@ public class EjArray2 {
 
         for (int i = 0; i < array.length; i++) {
             System.out.println("Animal " + (i + 1) + "/" + array.length);
-            System.out.println(nombres[i]);
+            System.out.println("Introduce el peso de: " + nombres[i]);
             peso = solicitarDatoDouble();
             array[i] = peso;
             System.out.println("\n");
@@ -118,13 +121,28 @@ public class EjArray2 {
 
         int numAnimalesTotales = array.length;
         double pesoTotal = 0;
+        int numAnimalesAbajo = 0;
+        int numAnimalesArriba = 0;
         for (int i = 0; i < array.length; i++) {
-            pesoTotal = array[i];
-            pesoTotal += pesoTotal;
+            double peso = array[i];
+            pesoTotal += peso;
         }
 
+        
         double media = pesoTotal / numAnimalesTotales;
-        System.out.println("Media de pesos: " + media + "Kg");
+
+        for (int i = 0; i < array.length; i++) {
+            double peso = array[i];
+            if (peso > media) {
+                numAnimalesArriba++;
+            } else if (peso < media) {
+                numAnimalesAbajo++;
+            }
+        }
+
+        System.out.println("Media: " + media + "Kg");
+        System.out.println("Nº Animales abajo: " + numAnimalesAbajo);
+        System.out.println("Nº Animales arriba: " + numAnimalesArriba);
     }
 
 }
