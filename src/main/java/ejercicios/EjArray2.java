@@ -24,10 +24,11 @@ public class EjArray2 {
         double[] arrayPesoAnimales = new double[numAnimales];
         arrayNombreAnimales = rellenarArrayNombres(arrayNombreAnimales);
         arrayPesoAnimales = rellenarArrayPesos(arrayPesoAnimales, arrayNombreAnimales);
-        mostrarArrayNombre(arrayNombreAnimales);
-        mostrarArrayPeso(arrayPesoAnimales);
         System.out.println("********************DATOS********************");
-        mostrarDatosPesos(arrayPesoAnimales);
+        mostrarArrays(arrayPesoAnimales, arrayNombreAnimales);
+        double media = calcularMedia(arrayPesoAnimales);
+        System.out.println("La media de animales es: " + media);
+        mostrarDebajoArribaMedia(arrayPesoAnimales, arrayNombreAnimales, media);
     }
 
     // Solicitar Nº animales.
@@ -80,10 +81,9 @@ public class EjArray2 {
 
         for (int i = 0; i < array.length; i++) {
             System.out.println("Animal " + (i + 1) + "/" + array.length);
-            System.out.println("Introduce el peso de: " + nombres[i]);
+            System.out.println("Introduce el peso de " + nombres[i]);
             peso = solicitarDatoDouble();
             array[i] = peso;
-            System.out.println("\n");
 
         }
         return array;
@@ -117,7 +117,7 @@ public class EjArray2 {
     }
 
     //Calcular peso Animales
-    public static void mostrarDatosPesos(double[] array) {
+    public static double calcularMedia(double[] array) {
 
         int numAnimalesTotales = array.length;
         double pesoTotal = 0;
@@ -128,21 +128,37 @@ public class EjArray2 {
             pesoTotal += peso;
         }
 
-        
         double media = pesoTotal / numAnimalesTotales;
+        return media;
+    }
 
-        for (int i = 0; i < array.length; i++) {
-            double peso = array[i];
+    public static void mostrarDebajoArribaMedia(double[] arrayPesos, String[] arrayNombres, double media) {
+        int numAnimalesAbajo = 0;
+        int numAnimalesArriba = 0;
+        int longitud = arrayNombres.length;
+
+        for (int i = 0; i < longitud; i++) {
+            double peso = arrayPesos[i];
+
             if (peso > media) {
+                System.out.println(arrayNombres[i] + " está por encima de la media");
                 numAnimalesArriba++;
+
             } else if (peso < media) {
+                System.out.println(arrayNombres[i] + " está por debajo de la media");
                 numAnimalesAbajo++;
+            } else if (peso == media) {
+                System.out.println(arrayNombres[i] + " está en la media");
             }
         }
+        System.out.println("Nº Animales abajo: " + numAnimalesAbajo + "Nº Animales arriba: " + numAnimalesArriba);
+    }
 
-        System.out.println("Media: " + media + "Kg");
-        System.out.println("Nº Animales abajo: " + numAnimalesAbajo);
-        System.out.println("Nº Animales arriba: " + numAnimalesArriba);
+    public static void mostrarArrays(double[] arrayPesos, String[] arrayNombres) {
+        for (int i = 0; i < arrayNombres.length; i++) {
+            System.out.println(arrayNombres[i] + " pesa " + arrayPesos[i] + "Kg");
+        }
+
     }
 
 }

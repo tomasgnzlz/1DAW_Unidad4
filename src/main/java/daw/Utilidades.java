@@ -36,6 +36,28 @@ public class Utilidades {
 
         return dato;
     }
+    
+    public static double solicitarDatoDouble() {
+
+        Scanner teclado = new Scanner(System.in);
+        boolean seguir = true;
+        double dato = 0;
+        do {
+//            System.out.println("Introduce el peso: (5,5)");
+            try {
+                dato = teclado.nextDouble();
+                teclado.nextLine();
+                if (dato < 0) {
+                    dato = Math.abs(dato);
+                }
+                seguir = false;
+            } catch (InputMismatchException ime) {
+                System.out.println("ERROR. Dato no válido\n");
+                teclado.nextLine();
+            }
+        } while (seguir);
+        return dato;
+    }
 
     public static int filtrarInt110(int menor, int mayor) {
         int numero;
@@ -57,7 +79,7 @@ public class Utilidades {
 
     }
 
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++++++++++++++++++++++ ARRAY +++++++++++++++++++++++++++++
     public static boolean[] arrayBooleanos(int tam) {
         boolean[] array = new boolean[tam];
         return array;
