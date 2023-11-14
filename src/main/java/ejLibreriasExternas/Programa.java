@@ -30,6 +30,7 @@ public class Programa {
             do {
                 try {
                     opcionMenu = Integer.parseInt(JOptionPane.showInputDialog(opcionesMenu));
+                    
                 } catch (NumberFormatException nfe) {
                     JOptionPane.showMessageDialog(null, "ERROR");
                 }
