@@ -84,8 +84,8 @@ public class CuentaBancaria {
         }
     }
 
-    public void abonarInteresSaldo(double interes) {
-        this.interesMensual += interes;
+    public void abonarInteresSaldo() {
+        this.saldoCuenta += this.saldoCuenta*this.interesMensual;
     }
 
     //toString

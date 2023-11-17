@@ -13,7 +13,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 public class Cuentas {
 
     public static void main(String[] args) {
-        CuentaBancaria c1 = new CuentaBancaria("tomas", "AAAAAA", 1450, 0.5);
+        CuentaBancaria c1 = new CuentaBancaria("tomas", "AAAAAA", 1450, 10);
 
         System.out.println(c1.getNumCuenta());
         System.out.println(c1);
@@ -27,11 +27,14 @@ public class Cuentas {
         c1.retirarSaldo(2000);
         System.out.println(c1);
 
-        c1.abonarInteresSaldo(0.5);
+        c1.abonarInteresSaldo();
         System.out.println(c1);
 
-        CuentaBancaria c2 = new CuentaBancaria();
-        System.out.println(c2);
+        c1.setSaldoCuenta(1000);
+        System.out.println("SALdo 1 : " + c1.getSaldoCuenta());
+        
+        c1.abonarInteresSaldo();
+        System.out.println("SALdo 2 : " + c1.getSaldoCuenta());
     }
 
 }
