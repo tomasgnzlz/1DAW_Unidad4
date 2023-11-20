@@ -13,7 +13,7 @@ public class Cafetera {
     private double capacidadMaxima; // ml
     private double cantidadActual;
     public static final double MAX =1000;
-    public static final double MIN =1000;
+    public static final double MIN =0;
 
     // Constructores
     public Cafetera() {
