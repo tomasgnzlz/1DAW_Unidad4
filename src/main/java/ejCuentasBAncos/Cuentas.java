@@ -35,6 +35,11 @@ public class Cuentas {
         
         c1.abonarInteresSaldo();
         System.out.println("SALdo 2 : " + c1.getSaldoCuenta());
+        
+        // Constructor copia
+        CuentaBancaria copiaC1 = new CuentaBancaria(c1);
+        System.out.println(c1);
+        System.out.println(copiaC1);
     }
 
 }

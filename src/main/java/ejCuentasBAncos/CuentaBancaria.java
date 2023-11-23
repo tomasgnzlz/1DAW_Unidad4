@@ -18,6 +18,14 @@ public class CuentaBancaria {
     private double saldoCuenta;
     private double interesMensual;
     public static final int DIGITOS_CUENTA = 20;
+    
+    public CuentaBancaria(CuentaBancaria origen){
+        this.numCuenta = origen.numCuenta;
+        this.nombre = origen.nombre;
+        this.NIF =origen.NIF;
+        this.saldoCuenta = origen.saldoCuenta;
+        this.interesMensual = origen.interesMensual;
+    }
 
     // Constructores
     public CuentaBancaria() {
