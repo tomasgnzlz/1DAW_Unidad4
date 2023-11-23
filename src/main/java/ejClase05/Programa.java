@@ -38,6 +38,14 @@ public class Programa {
                 + MetodosEstaticos.sueldoBruto(e2, 5));
         System.out.println("Neto de e1 "
                 + MetodosEstaticos.sueldoNeto(e2, 5));
+        
+        // Ejemplo Jueves
+        String[] arrayNombres = {"Juan", "María", "Carlos", "Ana", "Pedro", "Laura", "Miguel", "Isabel", "José", "Elena"};
+        String[] arrayNIFS = {"AAAAA", "BBBBB", "CCCCC", "DDDDD", "EEEE", "FFFF", "GGGGG", "ZZZZ", "KKKKK", "OOOOO"};
+        Empleado empleadoRandom1 = new Empleado(arrayNombres, arrayNIFS);
+        System.out.println("\n***********************************************************\n");
+        System.out.println("Empleado Random 1: " + empleadoRandom1.toString());
+        
 
     }
 }

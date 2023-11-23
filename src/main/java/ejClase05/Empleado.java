@@ -20,18 +20,37 @@ public class Empleado {
     private IRPF irpf;
     private boolean casado;
     private int numHijos;
-    
-    //CONSTRUCTOR COPIA
-    public Empleado(Empleado origen,String []arraynombres,String []arrayNif){
+
+    //CONSTRUCTOR PARA CREAR RANDOM
+    public Empleado(String[] arraynombres, String[] arrayNif) {
         Random r1 = new Random();
-        this.nombre = nombre;
-        this.nif = nif;
-        this.sueldoBase =r1.nextDouble(1000,1501);
-        this.cantidadAbonarHoras = r1.nextDouble(30,51);
-        this.irpf = irpf;
-        boolean cosas = r1.nextBoolean();
-        this.casado = origen.setCasado(cosas);
+        int numRandom = r1.nextInt(11);
+
+        this.nombre = arraynombres[numRandom];
+        this.nif = arrayNif[numRandom];
+        this.sueldoBase = r1.nextDouble(1000, 1501);
+        this.cantidadAbonarHoras = r1.nextDouble(30, 51);
+        numRandom = r1.nextInt(1, 4);
+        if (numRandom == 1) {
+            this.irpf = IRPF.OCHO;
+        } else if (numRandom == 2) {
+            this.irpf = IRPF.QUINCE;
+        } else {
+            this.irpf = IRPF.VENTIUNO;
+        }
+        this.casado = r1.nextBoolean();
         this.numHijos = r1.nextInt(5);
+    }
+
+    // CONSTRUCTOR COPIA
+    public Empleado(Empleado origen) {
+        this.nombre = origen.nombre;
+        this.nif = origen.nif;
+        this.sueldoBase = origen.sueldoBase;
+        this.cantidadAbonarHoras = origen.cantidadAbonarHoras;
+        this.irpf = origen.irpf;
+        this.casado = origen.casado;
+        this.numHijos = origen.numHijos;
     }
 
     // Constructor
@@ -64,7 +83,6 @@ public class Empleado {
         return this.sueldoBase * (irpfFinal / 100);
     }
 
-    
     public double sueldoBruto(int numeroHoras) {
         return this.sueldoBase + this.calculo(numeroHoras);
     }
@@ -73,7 +91,6 @@ public class Empleado {
         return this.calculo(numeroHoras) - this.calculo();
     }
 
-    
     public String getNombre() {
         return nombre;
     }
@@ -131,6 +148,5 @@ public class Empleado {
     public String toString() {
         return "Empleado{" + "nombre=" + nombre + ", nif=" + nif + ", sueldoBase=" + sueldoBase + ", cantidadAbonarHoras=" + cantidadAbonarHoras + ", irpf=" + irpf + ", casado=" + casado + ", numHijos=" + numHijos + '}';
     }
-    
-    
+
 }
