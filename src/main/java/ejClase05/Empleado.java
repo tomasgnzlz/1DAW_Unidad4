@@ -4,6 +4,7 @@
  */
 package ejClase05;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 /**
@@ -22,12 +23,12 @@ public class Empleado {
     private int numHijos;
 
     //CONSTRUCTOR PARA CREAR RANDOM
-    public Empleado(String[] arraynombres, String[] arrayNif) {
+    public Empleado() {
+        
         Random r1 = new Random();
         int numRandom = r1.nextInt(11);
-
-        this.nombre = arraynombres[numRandom];
-        this.nif = arrayNif[numRandom];
+        this.nombre = nombres();
+        this.nif = nif();
         this.sueldoBase = r1.nextDouble(1000, 1501);
         this.cantidadAbonarHoras = r1.nextDouble(30, 51);
         numRandom = r1.nextInt(1, 4);
@@ -42,7 +43,23 @@ public class Empleado {
         this.numHijos = r1.nextInt(5);
     }
 
-    // CONSTRUCTOR COPIA
+    public static String nombres() {
+        String[] arrayNombres = {"Juan", "María", "Carlos", "Ana", "Pedro", "Laura", "Miguel", "Isabel", "José", "Elena"};
+        Random r1 = new Random();
+        int numRandom = r1.nextInt(10);
+        String nombreResultado = arrayNombres[numRandom];
+        return nombreResultado;
+    }
+
+    public static String nif() {
+        String[] arrayNIFS = {"12345678A", "23456789B", "34567890C", "45678901D", "56789012E", "67890123F", "78901234G", "89012345H", "90123456J", "01234567K"};
+        Random r1 = new Random();
+        int numRandom = r1.nextInt(10);
+        String nombreResultado = arrayNIFS[numRandom];
+        return nombreResultado;
+    }
+
+    // CONSTRUCTOR COPIAS
     public Empleado(Empleado origen) {
         this.nombre = origen.nombre;
         this.nif = origen.nif;
@@ -146,7 +163,11 @@ public class Empleado {
     // toString
     @Override
     public String toString() {
-        return "Empleado{" + "nombre=" + nombre + ", nif=" + nif + ", sueldoBase=" + sueldoBase + ", cantidadAbonarHoras=" + cantidadAbonarHoras + ", irpf=" + irpf + ", casado=" + casado + ", numHijos=" + numHijos + '}';
+        DecimalFormat df = new DecimalFormat("#.##");
+        return "Empleado{" + "nombre=" + nombre + ", nif=" + nif + ", sueldoBase="
+                + df.format(sueldoBase) + ", cantidadAbonarHoras="
+                + df.format(cantidadAbonarHoras) + ", irpf=" + irpf
+                + ", casado=" + casado + ", numHijos=" + numHijos + '}';
     }
 
 }

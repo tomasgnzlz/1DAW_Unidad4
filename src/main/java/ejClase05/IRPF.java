@@ -9,7 +9,7 @@ package ejClase05;
  * @author tomas
  */
 public enum IRPF {
-    OCHO(0.8), QUINCE(0.15), VENTIUNO(0.25);
+    OCHO(0.8), QUINCE(0.15), VENTIUNO(0.21);
     
     double tipoIRPF;
 

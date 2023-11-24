@@ -4,6 +4,8 @@
  */
 package ejClase05;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 /**
  *
  * @author tomas
@@ -40,12 +42,23 @@ public class Programa {
                 + MetodosEstaticos.sueldoNeto(e2, 5));
         
         // Ejemplo Jueves
-        String[] arrayNombres = {"Juan", "María", "Carlos", "Ana", "Pedro", "Laura", "Miguel", "Isabel", "José", "Elena"};
-        String[] arrayNIFS = {"AAAAA", "BBBBB", "CCCCC", "DDDDD", "EEEE", "FFFF", "GGGGG", "ZZZZ", "KKKKK", "OOOOO"};
-        Empleado empleadoRandom1 = new Empleado(arrayNombres, arrayNIFS);
+        Empleado empleadoRandom1 = new Empleado();
         System.out.println("\n***********************************************************\n");
         System.out.println("Empleado Random 1: " + empleadoRandom1.toString());
+        // Ejemplo Viernes
+        System.out.println("\n******************************NUEVOS*****************************\n");
+        Empleado[] arrayEmpleados = metodo(10);
+        for (int i = 0; i < arrayEmpleados.length; i++) {
+            System.out.println(arrayEmpleados[i]);
+        }
+    }
+    
+    public static Empleado[] metodo(int num){   
         
-
+        Empleado[] arrayEmpleados = new Empleado[num];
+        for (int i = 0; i < arrayEmpleados.length; i++) {
+            arrayEmpleados[i] = new Empleado();
+        }
+        return arrayEmpleados;
     }
 }
