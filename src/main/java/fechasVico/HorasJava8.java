@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fechas;
+package fechasVico;
 
 // Clase para horas, minutos y segundos
 import java.time.LocalTime;
